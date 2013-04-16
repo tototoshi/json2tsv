@@ -52,10 +52,10 @@ object Json2TSV extends Parser {
 
     case class Config(paths: List[String], files: List[String])
 
-    val parser = new scopt.immutable.OptionParser[Config]("jsontools", "0.1-SNAPSHOT") {
+    val parser = new scopt.immutable.OptionParser[Config]("json2tsv", "0.1-SNAPSHOT") {
       def options = Seq(
         opt("p", "path", "path to field") { (v: String, c: Config) => c.copy(paths = c.paths ::: v :: Nil) },
-        arglist("<files>...", "file") { (v: String, c: Config) => c.copy(files = c.files ::: v :: Nil) }
+        arglistOpt("<files>...", "file") { (v: String, c: Config) => c.copy(files = c.files ::: v :: Nil) }
       )
     }
 
