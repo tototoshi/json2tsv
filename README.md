@@ -2,15 +2,18 @@
 
 Convert json log to tab-separated values.
 
-## How to build
+## How to install
 
 ```
 $ cd json2tsv
-$ ./sbt assembly
+$ ./install
 ```
+
+`json2tsv` will be installed in $HOME/bin.
+
 
 ## Example
 ```
-$ echo '{"foo": "abc", "bar": { "piyo": 3 }}' | java -jar target/json2tsv-assembly-0.1-SNAPSHOT.jar -p foo -p bar.piyo
+$ echo '{"foo": "abc", "bar": { "piyo": 3 }}' | json2tsv -p foo -p bar.piyo
 abc     3
 ```
