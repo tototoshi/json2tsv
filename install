@@ -1,0 +1,30 @@
+#!/bin/bash
+cd $(dirname $0)
+
+INSTALL_DIR=$HOME/bin
+EXECUTABLE=$INSTALL_DIR/json2tsv
+
+if [ ! -f "$INSTALL_DIR" ]; then
+    mkdir -p $INSTALL_DIR
+fi
+
+./sbt assembly
+
+VERSION=$(cat project/Json2TSVBuild.scala | grep version | perl -pe 's/.*?"(.*?)",.*?/$1/')
+
+JAR=target/json2tsv-assembly-${VERSION}.jar
+
+cp $JAR $INSTALL_DIR/
+
+read -d '' SCRIPT <<EOF
+#!/bin/sh
+java -jar $(dirname $0)/$JAR "\$@"
+EOF
+
+echo "$SCRIPT" > $EXECUTABLE
+
+chmod +x $EXECUTABLE
+
+if [ "$?" -eq 0 ]; then
+    echo "Successfully installed in $INSTALL_DIR"
+fi
