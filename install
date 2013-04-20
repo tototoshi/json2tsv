@@ -12,13 +12,13 @@ fi
 
 VERSION=$(cat project/Json2TSVBuild.scala | grep version | perl -pe 's/.*?"(.*?)",.*?/$1/')
 
-JAR=target/json2tsv-assembly-${VERSION}.jar
+JAR=json2tsv-assembly-${VERSION}.jar
 
-cp $JAR $INSTALL_DIR/
+cp target/$JAR $INSTALL_DIR/
 
 read -d '' SCRIPT <<EOF
 #!/bin/sh
-java -jar $(dirname $0)/$JAR "\$@"
+java -jar \$(dirname \$0)/$JAR "\$@"
 EOF
 
 echo "$SCRIPT" > $EXECUTABLE
