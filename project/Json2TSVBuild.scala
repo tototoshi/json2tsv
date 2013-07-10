@@ -9,7 +9,7 @@ object Json2TSVBuild extends Build {
     settings = Project.defaultSettings ++ Seq(
       name := "json2tsv",
       organization := "com.github.tototoshi",
-      version := "0.1-SNAPSHOT",
+      version := "0.1.0",
       scalaVersion := "2.10.0",
       libraryDependencies ++= Seq(
         "org.json4s" %% "json4s-native" % "3.1.0",
