@@ -14,7 +14,7 @@ object Json2TSVBuild extends Build {
       libraryDependencies ++= Seq(
         "org.json4s" %% "json4s-native" % "3.1.0",
         "com.jsuereth" %% "scala-arm" % "1.3",
-        "com.github.scopt" %% "scopt" % "2.1.0",
+        "com.github.scopt" %% "scopt" % "3.1.0",
         "org.scalatest" %% "scalatest" % "1.9.1" % "test"
       )
     )
